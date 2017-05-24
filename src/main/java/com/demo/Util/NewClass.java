@@ -10,5 +10,5 @@ package com.demo.Util;
  * @author  longh
  */
 public class NewClass {
-    
+    System.out.println("");
 }
