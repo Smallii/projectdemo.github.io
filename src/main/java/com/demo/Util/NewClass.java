@@ -7,7 +7,7 @@ package com.demo.Util;
 
 /**
  *
- * @author longh
+ * @author  longh
  */
 public class NewClass {
     
