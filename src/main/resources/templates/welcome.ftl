@@ -1,58 +1,47 @@
 <!DOCTYPE html>
-<html ng-app="myApp">
+<html ng-app>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title>test</title>
-    <script src="/jquery.min.3.2.1.js"></script>
-    <script src="/angular.min.js"></script>
-    <script src="/bootstrap.min.js"></script>
-    <script src="/nprogress.js"></script>
-    <script src="/Name.js"></script>
+    <script src="/js/jquery.min.3.2.1.js"></script>
+    <script src="/js/angular.min.js"></script>
+    <script src="/js/angular-route.js"></script>
+    <script src="/server/main.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/nprogress.js"></script>
     <!--<script src="/ionic.bundle.min.js"></script>-->
-    <link href="/nprogress.css" rel="stylesheet">
-    <link href="/bootstrap.min.css" rel="stylesheet">
-    <link href="/bootstrap-theme.min.css" rel="stylesheet">
-    <!--<link href="/ionic.css" rel="stylesheet">-->
-    
+    <link href="/css/nprogress.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
 </head>
-    <body ng-controller="myCtrl">
-    
 
-<!-- 模态框（Modal） -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-					&times;
-				</button>
-				<h4 class="modal-title" id="myModalLabel">
-					确定删除吗？
-				</h4>
-			</div>
-                        <!--
-			<div class="modal-body">
-				在这里添加一些文本
-			</div>
-                        -->
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">取消
-				</button>
-				<button type="button" class="btn btn-primary">
-					删除
-				</button>
-			</div>
-		</div><!-- /.modal-content -->
-	</div><!-- /.modal -->
-</div>
-
-
-        <!-- 引入头 -->
-        <#include "/header.ftl">
+    <body ng-controller="UserController">
         
-        
-
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">
+                          <img alt="Brand" src="...">
+                        </a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#/home">Home</a></li>
+                        <li><a href="#/about">About</a></li>
+                    </ul>
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                          <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                    <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
+                </div>
+            </div>
+        </nav>
+        <div ng-view=""></div>
         {{allStatus.status}}
 
 
