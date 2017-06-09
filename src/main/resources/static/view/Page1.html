@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body ng-controller="NavigationCtrl">
+        <!--{{allStatus.status}}-->
+
+        <!--
+        <form class="form-inline">
+            <div class="form-group">
+                <label for="exampleInputName2">Name</label>
+                <input type="text" class="form-control" ng-model="par.name" placeholder="zhangsan">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail2">Pwd</label>
+                <input type="password" class="form-control" ng-model="par.pwd" placeholder="123456">
+            </div>
+        <button type="submit" class="btn btn-primary" ng-click="save()">{{allStatus.save}}</button>
+        </form>
+        -->
+
+        <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Pwd</th>
+                    <th>操作</th>
+                    <th>状态:{{allButton.status}}--</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="stooge in data">
+                    <th scope="row">{{stooge.id}}</th>
+                    <td>{{stooge.name}}</td>
+                    <td>{{stooge.pwd}}</td>
+                    <td><button type="button" class="btn btn-warning" ng-click="findById(stooge.id)">4324324</button></td>
+                    <td><button type="button" class="btn btn-danger" ng-click="del(stooge.id)">23432432423423</button></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </body>
+</html>
