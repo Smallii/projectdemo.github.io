@@ -13,35 +13,24 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
  * @author Smalli
  */
-@Controller
+@RestController
 public class IndexController {
     
     @Autowired
     UserService userService;
     
     /**
-     * 显示主页
-     * @return 
-     */
-    @RequestMapping(value="/index", method = RequestMethod.GET)
-    public String index(){
-        System.out.println("跳转...");
-        return "welcome";
-    }
-    
-    /**
      * 查询用户
      * @param val
      * @return 全部用户信息
      */
-    @RequestMapping(value="/findAll", method = RequestMethod.GET)
-    @ResponseBody
+    @RequestMapping(value="/findAll", method = RequestMethod.POST)
     public List<User> findAll(String val){
         //return "welcome";
         //直接返回JSON数据
@@ -54,7 +43,6 @@ public class IndexController {
      * @return 查询全部用户信息
      */
     @RequestMapping(value="/save", method = RequestMethod.POST)
-    @ResponseBody
     public List<User> saveUser(
             @RequestBody User user){
         userService.save(user);
@@ -68,7 +56,6 @@ public class IndexController {
      * @return 查询全部用户信息
      */
     @RequestMapping(value="/delete", method = RequestMethod.POST)
-    @ResponseBody
     public List<User> deleteUser(
             @RequestBody User user){
         userService.delete(user);
@@ -82,7 +69,6 @@ public class IndexController {
      * @return 
      */
     @RequestMapping(value="/findById", method = RequestMethod.POST)
-    @ResponseBody
     public User findByIdUser(
             @RequestBody User user){
         return userService.findById(user.getId());
