@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 
-
-app.config(function ($routeProvider) {
+angular.module('myApp.controllers', [])
+.config(function ($routeProvider) {
     $routeProvider.
     when('/home', {
         templateUrl: '/welcome.ftl',

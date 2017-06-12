@@ -26,8 +26,16 @@ and open the template in the editor.
         <button type="submit" class="btn btn-primary" ng-click="save()">{{allStatus.save}}</button>
         </form>
         -->
-
-        <div class="table-responsive">
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Library</a></li>
+            <li class="active">Data</li>
+        </ol>
+        
+        <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">当前注册用户</div>
+        
         <table class="table">
             <thead>
                 <tr>
@@ -35,7 +43,7 @@ and open the template in the editor.
                     <th>Name</th>
                     <th>Pwd</th>
                     <th>操作</th>
-                    <th>状态:{{allButton.status}}--</th>
+                    <th>状态:{{allButton.status}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -43,8 +51,8 @@ and open the template in the editor.
                     <th scope="row">{{stooge.id}}</th>
                     <td>{{stooge.name}}</td>
                     <td>{{stooge.pwd}}</td>
-                    <td><button type="button" class="btn btn-warning" ng-click="findById(stooge.id)">4324324</button></td>
-                    <td><button type="button" class="btn btn-danger" ng-click="del(stooge.id)">23432432423423</button></td>
+                    <td><button type="button" class="btn btn-warning" ng-click="findById(stooge.id)">{{allButton.update}}</button></td>
+                    <td><button type="button" class="btn btn-danger" ng-click="del(stooge.id)">{{allButton.delete}}</button></td>
                 </tr>
             </tbody>
         </table>
