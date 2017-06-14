@@ -7,15 +7,17 @@
 
 var myApp = angular.module('myApp', ['ui.router', 'myApp.controllers', 'myApp.services']);
 myApp.controller('TabsCtrl', ['$scope','$state',function($scope,$state) {
-		console.log('init ctrl');
-		$scope.currentType = $state.current.name.split('.')[1];
-		$scope.changeTab = function(type){
-			$scope.currentType = type;
-		};
-	}])
-	.run(['$state', function($state) {
+    console.log('init ctrl');
+    $scope.currentType = $state.current.name.split('.')[1];
+    $scope.changeTab = function(type){
+        $scope.currentType = type;
+    };
+    $scope.open = function(){
+        layer.msg('hello');
+    };
+}]).run(['$state', function($state) {
 //		$state.go('app.home');
-}]);
+    }]);
 myApp.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/tab/Page1");
     console.log('init ctrl');
