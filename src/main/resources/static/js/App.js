@@ -21,17 +21,38 @@ myApp.controller('TabsCtrl', ['$scope','$state',function($scope, $state, $http) 
         password:"",
         code:""
     };
-     $scope.vifei = function () {
-         console.log($scope.Users.phone);
-         if($scope.Users.phone === undefined ){
-             console.log("false:" + $scope.Users.phone);
-            $scope.someVariable = false;
-         } else if($scope.Users.phone !== ""){
-             console.log("true:" + $scope.Users.phone);
-             $scope.someVariable = true;
-         } else {
+    //验证电话
+    $scope.viPhone = function () {
+        console.log($scope.Users.phone);
+        if($scope.Users.phone === undefined ){
             console.log("false:" + $scope.Users.phone);
-            $scope.someVariable = false;
+            $scope.valPhone = false;
+        } else if($scope.Users.phone !== ""){
+            console.log("true:" + $scope.Users.phone);
+            $scope.valPhone = true;
+        } else {
+            console.log("false:" + $scope.Users.phone);
+            $scope.valPhone = false;
+        }
+    };
+    //验证用户名
+    $scope.viMonicker = function (){
+        if($scope.Users.monicker === undefined){
+            $scope.valMonicker = false;
+        } else if($scope.Users.monicker !== ""){
+            $scope.valMonicker = true;
+        } else {
+            $scope.valMonicker = false;
+        }
+    };
+    //验证密码
+    $scope.viPassword = function (){
+        if($scope.Users.password === undefined){
+            $scope.valPassword = false;
+        } else if($scope.Users.password !== ""){
+            $scope.valPassword = true;
+        } else {
+            $scope.valPassword = false;
         }
     };
     
