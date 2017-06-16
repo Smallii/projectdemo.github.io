@@ -57,23 +57,25 @@
 			<div class="modal-body">
                             <!-- 注册用户 -->
                             <form name="myForm" class="form-horizontal" role="form" novalidate>
-                                <div class="form-group" ng-class="{true :'has-success', false :'has-error'}[someVariable]">
+                                <div class="form-group" ng-class="{true :'has-success', false :'has-error'}[Phone]">
                                   <label class="col-sm-2 control-label">电话</label>
                                   <div class="col-sm-10">
-                                      <input type="number" name="phone" ng-model="Users.phone" class="form-control"  ng-change="vifei()" required>
-                                      <span class="help-block" ng-show="myForm.phone.$dirty && myForm.phone.$invalid"><span ng-show="myForm.phone.$error.required">用户名是必须的。</span></span>
+                                      <input type="number" name="phone" ng-model="Users.phone" class="form-control" ng-change="viPhone()" required>
+                                      <span class="help-block" ng-show="myForm.phone.$dirty && myForm.phone.$invalid"><span ng-show="myForm.phone.$error.required">请输入有效的手机号</span></span>
                                   </div>
                                 </div>
-                                <div class="form-group">
-                                  <label for="firstname" class="col-sm-2 control-label">名字</label>
+                                <div class="form-group" ng-class="{true :'has-success', false :'has-error'}[Phone]">
+                                  <label class="col-sm-2 control-label">名字</label>
                                   <div class="col-sm-10">
-                                    <input type="text" ng-model="Users.monicker" class="form-control" required>
+                                    <input type="text" name="monicker" ng-model="Users.monicker" class="form-control" ng-change="viMonicker()" required>
+                                    <span class="help-block" ng-show="myForm.monicker.$dirty && myForm.monicker.$invalid"><span ng-show="myForm.monicker.$error.required">请输入名字</span></span>
                                   </div>
                                 </div>
-                                <div class="form-group">
-                                  <label for="firstname" class="col-sm-2 control-label">密码</label>
+                                <div class="form-group" ng-class="{true :'has-success', false :'has-error'}[Phone]"">
+                                  <label class="col-sm-2 control-label">密码</label>
                                   <div class="col-sm-10">
-                                    <input type="text" ng-model="Users.password" class="form-control" required>
+                                    <input type="text" name="password" ng-model="Users.password" class="form-control" ng-change="viPassword()" required>
+                                    <span class="help-block" ng-show="myForm.password.$dirty && myForm.password.$invalid"><span ng-show="myForm.password.$error.required">请输入密码</span></span>
                                   </div>
                                 </div>
                                 <div class="form-group">
