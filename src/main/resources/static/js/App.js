@@ -13,12 +13,28 @@ myApp.controller('TabsCtrl', ['$scope','$state',function($scope, $state, $http) 
         $scope.currentType = type;
     };
     $scope.open = function(){
-        layer.msg('hello');
+        layer.msg('hello undefined');
     };
-    $scope.User = {
-        username:"",
-        password:""
+    $scope.Users = {
+        phone:"",
+        monicker:"",
+        password:"",
+        code:""
     };
+     $scope.vifei = function () {
+         console.log($scope.Users.phone);
+         if($scope.Users.phone === undefined ){
+             console.log("false:" + $scope.Users.phone);
+            $scope.someVariable = false;
+         } else if($scope.Users.phone !== ""){
+             console.log("true:" + $scope.Users.phone);
+             $scope.someVariable = true;
+         } else {
+            console.log("false:" + $scope.Users.phone);
+            $scope.someVariable = false;
+        }
+    };
+    
     //注册用户
     $scope.Regin = function (){
         //进度条
