@@ -6,7 +6,7 @@
 
 
 var myApp = angular.module('myApp', ['ui.router', 'myApp.controllers', 'myApp.services']);
-myApp.controller('TabsCtrl', ['$scope','$state',function($scope,$state) {
+myApp.controller('TabsCtrl', ['$scope','$state',function($scope, $state, $http) {
     console.log('init ctrl');
     $scope.currentType = $state.current.name.split('.')[1];
     $scope.changeTab = function(type){
@@ -14,6 +14,37 @@ myApp.controller('TabsCtrl', ['$scope','$state',function($scope,$state) {
     };
     $scope.open = function(){
         layer.msg('hello');
+    };
+    $scope.User = {
+        username:"",
+        password:""
+    };
+    //注册用户
+    $scope.Regin = function (){
+        //进度条
+        NProgress.start();
+        $http({
+            method: 'POST',
+            url: 'http://localhost:8080/save',
+            data:{
+                name:$scope.par.name,
+                pwd:$scope.par.pwd
+            }
+        }).then(function successCallback(response) {
+            //结束进度条
+            NProgress.done();
+            $scope.allStatus.status = "Success!";
+            $scope.par.name = "";
+            $scope.par.pwd = "";
+            $scope.names = response.data;
+            console.log("Success...");
+        }, function errorCallback(response) {
+            //结束进度条
+            NProgress.done();
+            // 请求失败执行代码
+            $scope.allStatus.status = "Fail!";
+            console.log("Fail...");
+    });
     };
 }]).run(['$state', function($state) {
 //		$state.go('app.home');

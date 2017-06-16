@@ -3,6 +3,32 @@
   <persistence-unit name="com_demo_jar_0.0.1-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>com.demo.Model.User</class>
+    <class>com.demo.Model.UMenu</class>
+    <class>com.demo.Model.URole</class>
+    <class>com.demo.Model.UUsersGroup</class>
+    <class>com.demo.Model.FkPageelementAuthority</class>
+    <class>com.demo.Model.UFile</class>
+    <class>com.demo.Model.UUserinfo</class>
+    <class>com.demo.Model.FkUsersgroupUsers</class>
+    <class>com.demo.Model.UUsers</class>
+    <class>com.demo.Model.FkUsersgroupRole</class>
+    <class>com.demo.Model.FkAuthorityOperation</class>
+    <class>com.demo.Model.UPageElement</class>
+    <class>com.demo.Model.UFunctionOperation</class>
+    <class>com.demo.Model.FkRoleAuthority</class>
+    <class>com.demo.Model.FkFileAuthority</class>
+    <class>com.demo.Model.FkUsersRole</class>
+    <class>com.demo.Model.UAuthority</class>
+    <class>com.demo.Model.FkMenuAuthority</class>
+    <class>com.demo.Model.File</class>
+    <class>com.demo.Model.UsersGroup</class>
+    <class>com.demo.Model.Authority</class>
+    <class>com.demo.Model.Role</class>
+    <class>com.demo.Model.FunctionOperation</class>
+    <class>com.demo.Model.Users</class>
+    <class>com.demo.Model.PageElement</class>
+    <class>com.demo.Model.Menu</class>
+    <class>com.demo.Model.Userinfo</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/test?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

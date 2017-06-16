@@ -9,18 +9,25 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <script src="/js/jquery.min.3.2.1.js"></script>
         <script src="/js/angular.min.js"></script>
         <script src="/js/angular-ui-router.min.js"></script>
         <script src="/js/App.js"></script>
         <script src="/js/bootstrap.min.js"></script>
         <script src="/js/nprogress.js"></script>
-        <script src="/js/layer.js"></script>
+        
         <link href="/css/nprogress.css" rel="stylesheet">
         <link href="/css/style.css" rel="stylesheet">
         <!-- Bootstrap 库的核心文件 -->
         <link href="/css/bootstrap.min.css" rel="stylesheet">
         <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+        <!-- Bootstrap 库的字体文件 -->
+        <link href="/fonts/glyphicons-halflings-regular.eot" rel="stylesheet">
+        <link href="/fonts/glyphicons-halflings-regular.avg" rel="stylesheet">
+        <link href="/fonts/glyphicons-halflings-regular.ttf" rel="stylesheet">
+        <link href="/fonts/glyphicons-halflings-regular.woff" rel="stylesheet">
+        <link href="/fonts/glyphicons-halflings-regular.woff2" rel="stylesheet">
         <!-- Buttons 库的核心文件 -->
         <link href="/css/buttons.css" rel="stylesheet">
         <script src="/controller/UserController.js"></script>
@@ -28,11 +35,6 @@ and open the template in the editor.
         <script src="/services/services.js"></script>
     </head>
     <body ng-app="myApp">
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
-                <div ui-view></div>
-            </div>
-        </nav>
-        
+        <div ui-view></div>
     </body>
 </html>
