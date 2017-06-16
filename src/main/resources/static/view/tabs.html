@@ -56,26 +56,37 @@
 			</div>
 			<div class="modal-body">
                             <!-- 注册用户 -->
-                            <form class="form-horizontal" role="form">
+                            <form name="myForm" class="form-horizontal" role="form" novalidate>
+                                <div class="form-group" ng-class="{true :'has-success', false :'has-error'}[someVariable]">
+                                  <label class="col-sm-2 control-label">电话</label>
+                                  <div class="col-sm-10">
+                                      <input type="number" name="phone" ng-model="Users.phone" class="form-control"  ng-change="vifei()" required>
+                                      <span class="help-block" ng-show="myForm.phone.$dirty && myForm.phone.$invalid"><span ng-show="myForm.phone.$error.required">用户名是必须的。</span></span>
+                                  </div>
+                                </div>
                                 <div class="form-group">
                                   <label for="firstname" class="col-sm-2 control-label">名字</label>
                                   <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="firstname" placeholder="请输入名字">
+                                    <input type="text" ng-model="Users.monicker" class="form-control" required>
                                   </div>
                                 </div>
                                 <div class="form-group">
-                                  <label for="lastname" class="col-sm-2 control-label">姓</label>
+                                  <label for="firstname" class="col-sm-2 control-label">密码</label>
                                   <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="lastname" placeholder="请输入姓">
+                                    <input type="text" ng-model="Users.password" class="form-control" required>
                                   </div>
                                 </div>
                                 <div class="form-group">
-                                  <div class="col-sm-offset-2 col-sm-10">
-                                    <div class="checkbox">
-                                      <label>
-                                        <input type="checkbox">请记住我
-                                      </label>
-                                    </div>
+                                  <label for="firstname" class="col-sm-2 control-label">验证码</label>
+                                  <div class="col-sm-10">
+                                    <input type="text" ng-model="Users.code" class="form-control" required>
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <label for="firstname" class="col-sm-2 control-label"></label>
+                                  <div class="col-sm-10">
+                                    <canvas id="canvas" style="width:120px;height:50px;">你的浏览器不支持canvas,请更换浏览器!</canvas>
+                                    <a href="#" class="navbar-link" onclick="toggleVeritification();">看不清,换一张</a>
                                   </div>
                                 </div>
                             </form>
@@ -83,6 +94,10 @@
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
 				</button>
+                            <p>{{Users.phone}}</p>
+                            <p>{{Users.monicker}}</p>
+                            <p>{{Users.password}}</p>
+                            <p>{{myForm.phone.$dirty}}</p>
 				<button type="button" class="btn btn-primary">
 					确定注册
 				</button>
@@ -139,4 +154,5 @@
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal -->
 </div>
+<script src="/js/canvasVerification.js"></script>
 <div ui-view></div>
