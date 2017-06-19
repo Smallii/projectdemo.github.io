@@ -26,46 +26,72 @@ myApp.controller('TabsCtrl', ['$scope','$state',function($scope, $state, $http) 
         console.log($scope.Users.phone);
         if($scope.Users.phone === undefined ){
             console.log("false:" + $scope.Users.phone);
-            $scope.valPhone = false;
+            $scope.PhoneVal = false;
         } else if($scope.Users.phone !== ""){
             console.log("true:" + $scope.Users.phone);
-            $scope.valPhone = true;
+            $scope.PhoneVal = true;
         } else {
             console.log("false:" + $scope.Users.phone);
-            $scope.valPhone = false;
+            $scope.PhoneVal = false;
         }
     };
     //验证用户名
     $scope.viMonicker = function (){
         if($scope.Users.monicker === undefined){
-            $scope.valMonicker = false;
+            $scope.MonickerVal = false;
         } else if($scope.Users.monicker !== ""){
-            $scope.valMonicker = true;
+            $scope.MonickerVal = true;
         } else {
-            $scope.valMonicker = false;
+            $scope.MonickerVal = false;
         }
     };
     //验证密码
     $scope.viPassword = function (){
         if($scope.Users.password === undefined){
-            $scope.valPassword = false;
+            $scope.PasswordVal = false;
         } else if($scope.Users.password !== ""){
-            $scope.valPassword = true;
+            $scope.PasswordVal = true;
         } else {
-            $scope.valPassword = false;
+            $scope.PasswordVal = false;
+        }
+    };
+    //验证验证码
+    $scope.viCode = function (){
+        if($scope.Users.code === undefined){
+            $scope.CodeVal = false;
+        } else if($scope.Users.code !== ""){
+            $scope.CodeVal = true;
+        } else {
+            $scope.CodeVal = false;
         }
     };
     
     //注册用户
     $scope.Regin = function (){
+        //验证输入框
+        if($scope.Users.phone === "" || $scope.Users.phone === undefined){
+            alert("请输入电话");
+            return false;
+        };
+        if($scope.Users.monicker === "" || $scope.Users.monicker === undefined){
+            alert("请输入名字");
+            return false;
+        };
+        if($scope.Users.password === "" || $scope.Users.password === undefined){
+            alert("请输入密码");
+            return false;
+        };
+        alert("恭喜");
+        return false;
         //进度条
         NProgress.start();
         $http({
             method: 'POST',
             url: 'http://localhost:8080/save',
             data:{
-                name:$scope.par.name,
-                pwd:$scope.par.pwd
+                phone:$scope.Users.phone,
+                name:$scope.Users.monicker,
+                pwd:$scope.Users.password
             }
         }).then(function successCallback(response) {
             //结束进度条
