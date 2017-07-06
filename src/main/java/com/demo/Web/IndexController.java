@@ -5,7 +5,7 @@
  */
 package com.demo.Web;
 
-import com.demo.Model.Users;
+import com.demo.Model.Userinfo;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.demo.Service.UsersService;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
 
 /**
  *
@@ -31,7 +33,7 @@ public class IndexController {
      * @return 全部用户信息
      */
     @RequestMapping(value="/findAll", method = RequestMethod.POST)
-    public List<Users> findAll(String val){
+    public List<Userinfo> findAll(String val){
         //return "welcome";
         //直接返回JSON数据
         return usersService.findAll();
@@ -43,8 +45,8 @@ public class IndexController {
      * @return 查询全部用户信息
      */
     @RequestMapping(value="/save", method = RequestMethod.POST)
-    public List<Users> saveUser(
-            @RequestBody Users users){
+    public List<Userinfo> saveUser(
+            @RequestBody Userinfo users){
         usersService.save(users);
         //直接返回JSON数据
         return usersService.findAll();
@@ -56,8 +58,8 @@ public class IndexController {
      * @return 查询全部用户信息
      */
     @RequestMapping(value="/delete", method = RequestMethod.POST)
-    public List<Users> deleteUser(
-            @RequestBody Users users){
+    public List<Userinfo> deleteUser(
+            @RequestBody Userinfo users){
         usersService.delete(users);
         //直接返回JSON数据
         return usersService.findAll();
@@ -69,8 +71,17 @@ public class IndexController {
      * @return 
      */
     @RequestMapping(value="/findById", method = RequestMethod.POST)
-    public Users findByIdUser(
-            @RequestBody Users users){
-        return usersService.findById(users.getUid());
+    public Userinfo findByIdUser(
+            @RequestBody Userinfo users){
+        return usersService.findById(users.getId());
+    }
+    
+    @MessageMapping("/hello")
+    @SendTo("/topic/greetings")
+    public List<Userinfo> findAlls(String val) {
+        //return "welcome";
+        //直接返回JSON数据
+        System.out.println("获取新数据");
+        return usersService.findAll();
     }
 }

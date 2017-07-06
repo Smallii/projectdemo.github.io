@@ -5,12 +5,12 @@
  */
 package com.demo.Service.Impl;
 
-import com.demo.Model.Users;
+import com.demo.Model.Userinfo;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.demo.Mapper.UsersMapper;
+import com.demo.Mapper.UserinfoMapper;
 import com.demo.Service.UsersService;
 
 /**
@@ -22,27 +22,27 @@ import com.demo.Service.UsersService;
 public class UsersServiceImpl implements UsersService {
 
     @Autowired
-    UsersMapper usersMapper;
+    UserinfoMapper usersMapper;
     
     @Override
-    public List<Users> findAll() {
+    public List<Userinfo> findAll() {
         System.out.println("进入接口实现类1");
         return usersMapper.findAll();
     }
 
     @Override
-    public Users save(Users users) {
+    public Userinfo save(Userinfo users) {
         return usersMapper.save(users);
     }
 
     @Override
-    public void delete(Users users) {
+    public void delete(Userinfo users) {
         usersMapper.delete(users);
     }
 
     @Override
-    public Users findById(Long uid) {
-        return usersMapper.findByUid(uid);
+    public Userinfo findById(Long id) {
+        return usersMapper.findById(id);
     }
     
 }

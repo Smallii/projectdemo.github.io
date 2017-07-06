@@ -12,12 +12,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -30,93 +27,59 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Userinfo.findAll", query = "SELECT u FROM Userinfo u")
-    , @NamedQuery(name = "Userinfo.findByUinfoId", query = "SELECT u FROM Userinfo u WHERE u.uinfoId = :uinfoId")
-    , @NamedQuery(name = "Userinfo.findByUinfoAge", query = "SELECT u FROM Userinfo u WHERE u.uinfoAge = :uinfoAge")
-    , @NamedQuery(name = "Userinfo.findByUinfoSex", query = "SELECT u FROM Userinfo u WHERE u.uinfoSex = :uinfoSex")
-    , @NamedQuery(name = "Userinfo.findByUinfoBirthday", query = "SELECT u FROM Userinfo u WHERE u.uinfoBirthday = :uinfoBirthday")})
+    , @NamedQuery(name = "Userinfo.findById", query = "SELECT u FROM Userinfo u WHERE u.id = :id")
+    , @NamedQuery(name = "Userinfo.findByName", query = "SELECT u FROM Userinfo u WHERE u.name = :name")
+    , @NamedQuery(name = "Userinfo.findByNick", query = "SELECT u FROM Userinfo u WHERE u.nick = :nick")})
 public class Userinfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "uinfo_id")
-    private Long uinfoId;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "uinfo_age")
-    private int uinfoAge;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "uinfo_sex")
-    private int uinfoSex;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
-    @Column(name = "uinfo_birthday")
-    private String uinfoBirthday;
-    @JoinColumn(name = "uid", referencedColumnName = "uid")
-    @ManyToOne
-    private Users uid;
+    @Column(name = "id")
+    private Long id;
+    @Size(max = 255)
+    @Column(name = "name")
+    private String name;
+    @Size(max = 255)
+    @Column(name = "nick")
+    private String nick;
 
     public Userinfo() {
     }
 
-    public Userinfo(Long uinfoId) {
-        this.uinfoId = uinfoId;
+    public Userinfo(Long id) {
+        this.id = id;
     }
 
-    public Userinfo(Long uinfoId, int uinfoAge, int uinfoSex, String uinfoBirthday) {
-        this.uinfoId = uinfoId;
-        this.uinfoAge = uinfoAge;
-        this.uinfoSex = uinfoSex;
-        this.uinfoBirthday = uinfoBirthday;
+    public Long getId() {
+        return id;
     }
 
-    public Long getUinfoId() {
-        return uinfoId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setUinfoId(Long uinfoId) {
-        this.uinfoId = uinfoId;
+    public String getName() {
+        return name;
     }
 
-    public int getUinfoAge() {
-        return uinfoAge;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setUinfoAge(int uinfoAge) {
-        this.uinfoAge = uinfoAge;
+    public String getNick() {
+        return nick;
     }
 
-    public int getUinfoSex() {
-        return uinfoSex;
-    }
-
-    public void setUinfoSex(int uinfoSex) {
-        this.uinfoSex = uinfoSex;
-    }
-
-    public String getUinfoBirthday() {
-        return uinfoBirthday;
-    }
-
-    public void setUinfoBirthday(String uinfoBirthday) {
-        this.uinfoBirthday = uinfoBirthday;
-    }
-
-    public Users getUid() {
-        return uid;
-    }
-
-    public void setUid(Users uid) {
-        this.uid = uid;
+    public void setNick(String nick) {
+        this.nick = nick;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (uinfoId != null ? uinfoId.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -127,7 +90,7 @@ public class Userinfo implements Serializable {
             return false;
         }
         Userinfo other = (Userinfo) object;
-        if ((this.uinfoId == null && other.uinfoId != null) || (this.uinfoId != null && !this.uinfoId.equals(other.uinfoId))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -135,7 +98,7 @@ public class Userinfo implements Serializable {
 
     @Override
     public String toString() {
-        return "com.demo.Model.Userinfo[ uinfoId=" + uinfoId + " ]";
+        return "com.demo.Model.Userinfo[ id=" + id + " ]";
     }
     
 }
