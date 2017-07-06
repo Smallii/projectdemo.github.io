@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--
+测试Web Socket
+-->
+<html>
+    <head>
+        <title>WebSocket</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    </head>
+    <body onload="disconnect()">
+        <noscript><h2 style="color: #e80b0a;">Sorry，浏览器不支持WebSocket</h2></noscript>
+        <div>
+            <div>
+                <h1>Page 4 content goes here...</h1>
+            </div>
+            <div>
+                <button id="connect" ng-click="connect();">连接</button>
+                <button id="disconnect" disabled="disabled" ng-click="disconnect();">断开连接</button>
+            </div>
+            
+        </div>
+        <div>
+            {{data}}
+        </div>
+
+    </body>
+    
+</html>

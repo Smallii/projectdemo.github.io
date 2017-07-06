@@ -136,5 +136,10 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
             .state('tab.page3', {
                 url:'/Page3',
                 templateUrl: '/view/Page3.html'
+            })
+            .state('tab.page4', {
+                url:'/Page4',
+                templateUrl: '/view/Page4.html',
+                controller: 'WebSockCtrl'
             });
 });
