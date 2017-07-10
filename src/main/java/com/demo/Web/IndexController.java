@@ -8,14 +8,11 @@ package com.demo.Web;
 import com.demo.Model.Userinfo;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.demo.Service.UsersService;
-import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.SendTo;
 
 /**
  *
@@ -35,6 +32,7 @@ public class IndexController {
     @RequestMapping(value="/findAll", method = RequestMethod.POST)
     public List<Userinfo> findAll(String val){
         //return "welcome";
+        System.out.println("返回全部用户");
         //直接返回JSON数据
         return usersService.findAll();
     }
@@ -75,13 +73,5 @@ public class IndexController {
             @RequestBody Userinfo users){
         return usersService.findById(users.getId());
     }
-    
-    @MessageMapping("/hello")
-    @SendTo("/topic/greetings")
-    public List<Userinfo> findAlls(String val) {
-        //return "welcome";
-        //直接返回JSON数据
-        System.out.println("获取新数据");
-        return usersService.findAll();
-    }
+
 }
