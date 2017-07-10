@@ -12,9 +12,6 @@ myApp.controller('TabsCtrl', ['$scope','$state',function($scope, $state, $http) 
     $scope.changeTab = function(type){
         $scope.currentType = type;
     };
-    $scope.open = function(){
-        layer.msg('hello undefined');
-    };
     $scope.Users = {
         phone:"",
         monicker:"",
@@ -82,7 +79,7 @@ myApp.controller('TabsCtrl', ['$scope','$state',function($scope, $state, $http) 
             return false;
         };
         alert("恭喜");
-        return false;
+//        return false;
         //进度条
         NProgress.start();
         $http({
@@ -103,7 +100,7 @@ myApp.controller('TabsCtrl', ['$scope','$state',function($scope, $state, $http) 
             console.log("Success...");
         }, function errorCallback(response) {
             //结束进度条
-            NProgress.done();
+            NProgress.inc();
             // 请求失败执行代码
             $scope.allStatus.status = "Fail!";
             console.log("Fail...");
@@ -139,7 +136,6 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
             })
             .state('tab.page4', {
                 url:'/Page4',
-                templateUrl: '/view/Page4.html',
-                controller: 'WebSockCtrl'
+                templateUrl: '/view/Page4.html'
             });
 });
