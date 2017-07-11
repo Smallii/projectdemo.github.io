@@ -19,23 +19,19 @@ angular.module('myApp.controllers', [])
         //请求数据
     	$http({
         method: 'POST',
-        url: 'http://localhost:8080/findAll'
+        url: 'http://192.168.1.18:8080/findAll'
     }).then(function successCallback(response) {
-        console.log("状态码:" + response.status);
-        if (response.status === 200){
+            console.log("状态码:" + response.status);
             //结束进度条
             NProgress.done();
             $scope.data = response.data;
             console.log("Success...");
             $scope.allButton.status = "成功";
-        } else {
-            NProgress.inc();
-        }
         }, function errorCallback(response) {
-            //结束进度条
-            NProgress.inc();
+//            结束进度条
+            NProgress.done();
             Messenger().post({
-              message: 'There was an explosion while processing your request.',
+              message: '网络连接有点问题，过会儿再试吧！',
               type: 'error',
               showCloseButton: true
             });
