@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-/* global NProgress */
+/* global NProgress, Messenger */
 
 angular.module('myApp.controllers', [])
 //获取导航菜单信息
@@ -34,6 +34,11 @@ angular.module('myApp.controllers', [])
         }, function errorCallback(response) {
             //结束进度条
             NProgress.inc();
+            Messenger().post({
+              message: 'There was an explosion while processing your request.',
+              type: 'error',
+              showCloseButton: true
+            });
             // 请求失败执行代码
             console.log("Fail..." + response.status);
     });
