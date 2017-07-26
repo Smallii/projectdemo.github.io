@@ -28,7 +28,7 @@ public class IndexController {
      * 查询用户
      * @return 全部用户信息
      */
-    @RequestMapping(value="/findAll", method = RequestMethod.POST)
+    @RequestMapping(value="/findAll", method = RequestMethod.GET)
     public List<Userinfo> findAll(){
         //return "welcome";
         System.out.println("返回全部用户");

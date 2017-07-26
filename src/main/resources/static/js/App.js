@@ -5,7 +5,7 @@
  */
 
 
-var myApp = angular.module('myApp', ['ui.router', 'myApp.controllers', 'myApp.services']);
+var myApp = angular.module('myApp', ['ui.router', 'ngAnimate', 'myApp.controllers', 'myApp.services']);
 myApp.controller('TabsCtrl', ['$scope','$state',function($scope, $state, $http) {
 //    console.log('init ctrl');
     $scope.currentType = $state.current.name.split('.')[1];
@@ -53,15 +53,15 @@ myApp.controller('TabsCtrl', ['$scope','$state',function($scope, $state, $http) 
         }
     };
     //验证验证码
-    $scope.viCode = function (){
-        if($scope.Users.code === undefined){
-            $scope.CodeVal = false;
-        } else if($scope.Users.code !== ""){
-            $scope.CodeVal = true;
-        } else {
-            $scope.CodeVal = false;
-        }
-    };
+//    $scope.viCode = function (){
+//        if($scope.Users.code === undefined){
+//            $scope.CodeVal = false;
+//        } else if($scope.Users.code !== ""){
+//            $scope.CodeVal = true;
+//        } else {
+//            $scope.CodeVal = false;
+//        }
+//    };
     
     //注册用户
     $scope.Regin = function (){
@@ -84,23 +84,29 @@ myApp.controller('TabsCtrl', ['$scope','$state',function($scope, $state, $http) 
         NProgress.start();
         $http({
             method: 'POST',
-            url: 'http://localhost:8080/save',
-            data:{
-                phone:$scope.Users.phone,
-                name:$scope.Users.monicker,
-                pwd:$scope.Users.password
-            }
+            url: 'http://192.168.1.18:8080/save'
+//            data:{
+//                phone:$scope.Users.phone,
+//                name:$scope.Users.monicker,
+//                pwd:$scope.Users.password
+//            }
         }).then(function successCallback(response) {
             //结束进度条
             NProgress.done();
-            $scope.allStatus.status = "Success!";
-            $scope.par.name = "";
-            $scope.par.pwd = "";
-            $scope.names = response.data;
+            $scope.allButton.status = "Success!";
+            $scope.Users.phone = "";
+            $scope.Users.monicker = "";
+            $scope.Users.password = "";
+            $scope.data = response.data;
             console.log("Success...");
         }, function errorCallback(response) {
             //结束进度条
-            NProgress.inc();
+            NProgress.done();
+            Messenger().post({
+              message: '网络连接有点问题，过会儿再试吧！',
+              type: 'error',
+              showCloseButton: true
+            });
             // 请求失败执行代码
             $scope.allStatus.status = "Fail!";
             console.log("Fail...");

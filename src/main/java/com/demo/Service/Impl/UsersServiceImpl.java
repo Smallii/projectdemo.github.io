@@ -26,7 +26,6 @@ public class UsersServiceImpl implements UsersService {
     
     @Override
     public List<Userinfo> findAll() {
-        System.out.println("进入接口实现类1");
         return usersMapper.findAll();
     }
 
