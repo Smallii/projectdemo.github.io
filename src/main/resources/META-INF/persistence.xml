@@ -29,6 +29,7 @@
     <class>com.demo.Model.PageElement</class>
     <class>com.demo.Model.Menu</class>
     <class>com.demo.Model.Userinfo</class>
+    <class>com.demo.Model.Captions</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/test?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
