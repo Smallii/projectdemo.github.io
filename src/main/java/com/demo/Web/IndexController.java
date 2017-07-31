@@ -30,8 +30,6 @@ public class IndexController {
      */
     @RequestMapping(value="/findAll", method = RequestMethod.GET)
     public List<Userinfo> findAll(){
-        //return "welcome";
-        System.out.println("返回全部用户");
         //直接返回JSON数据
         return usersService.findAll();
     }

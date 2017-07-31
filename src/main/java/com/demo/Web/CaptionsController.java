@@ -29,11 +29,6 @@ public class CaptionsController {
      */
     @RequestMapping(value="/findAll_caption", method = RequestMethod.POST)
     public List<Captions> findAll(){
-        System.out.println("获取banner图片");
-        List<Captions> csd = captionsService.findAll();
-        for (Captions captions : csd) {
-            System.out.println("com.demo.Web.CaptionsController.findAll()" + captions.getPhotosPath());
-        }
         return captionsService.findAll();
     }
 }
