@@ -6,6 +6,8 @@
 package com.demo.Mapper;
 
 import com.demo.Model.Userinfo;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.query.Param;
@@ -24,5 +26,13 @@ public interface UserinfoMapper extends JpaRepository<Userinfo,Long>, JpaSpecifi
      * @return 
      */
     Userinfo findById(@Param("id") Long id);
+    
+    /**
+     * 分页查询用户列表
+     * @param pageable
+     * @return 
+     */
+    @Override
+    Page<Userinfo> findAll(Pageable pageable);
     
 }

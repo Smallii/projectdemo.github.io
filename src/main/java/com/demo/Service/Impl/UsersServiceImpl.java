@@ -6,12 +6,15 @@
 package com.demo.Service.Impl;
 
 import com.demo.Model.Userinfo;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.demo.Mapper.UserinfoMapper;
 import com.demo.Service.UsersService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 /**
  *
@@ -25,8 +28,10 @@ public class UsersServiceImpl implements UsersService {
     UserinfoMapper usersMapper;
     
     @Override
-    public List<Userinfo> findAll() {
-        return usersMapper.findAll();
+    public Page<Userinfo> findAll(Integer page, Integer size) {
+        Sort sort = new Sort(Sort.Direction.ASC, "id");
+        Pageable pageable = new PageRequest(page, size, sort);
+        return usersMapper.findAll(pageable);
     }
 
     @Override

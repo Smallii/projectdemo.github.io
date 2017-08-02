@@ -6,7 +6,7 @@
 package com.demo.Service;
 
 import com.demo.Model.Userinfo;
-import java.util.List;
+import org.springframework.data.domain.Page;
 
 /**
  *
@@ -15,9 +15,11 @@ import java.util.List;
 public interface UsersService {
     /**
      * 
+     * @param page
+     * @param size
      * @return 显示全部用户信息
      */
-    List<Userinfo> findAll();
+    Page<Userinfo> findAll(Integer page, Integer size);
     /**
      * @param users
      * @return 添加用户
@@ -31,7 +33,7 @@ public interface UsersService {
     
     /**
      * 根据id查询用户信息
-     * @param uid
+     * @param id
      * @return 
      */
     Userinfo findById(Long id);
