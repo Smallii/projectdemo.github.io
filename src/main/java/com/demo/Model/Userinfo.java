@@ -5,7 +5,6 @@
  */
 package com.demo.Model;
 
-import com.demo.Util.PageUtil;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -21,7 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Smalli
+ * @author smalli
  */
 @Entity
 @Table(name = "userinfo")
@@ -31,7 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Userinfo.findById", query = "SELECT u FROM Userinfo u WHERE u.id = :id")
     , @NamedQuery(name = "Userinfo.findByName", query = "SELECT u FROM Userinfo u WHERE u.name = :name")
     , @NamedQuery(name = "Userinfo.findByNick", query = "SELECT u FROM Userinfo u WHERE u.nick = :nick")})
-public class Userinfo extends PageUtil implements Serializable {
+public class Userinfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
